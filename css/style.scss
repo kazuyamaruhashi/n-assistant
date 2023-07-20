@@ -1,5 +1,12 @@
 @use "_reset.css";
 
+:root {
+    line-height: 1.4;
+    letter-spacing: .16rem;
+    font-feature-settings: "palt";
+    scroll-behavior: smooth;
+}
+
 html {
     overflow-x: hidden;
 }
@@ -38,7 +45,7 @@ a {
         right: 16px;
         background-color: blanchedalmond;
         }
-        
+
     /*ボタン内側*/
     .open-button span{
         display: inline-block;
@@ -49,32 +56,32 @@ a {
         background: #FB8C3C;
         width: 45%;
     }
-    
+
     .open-button span:nth-of-type(1) {
-        top:15px; 
+        top:15px;
     }
-    
+
     .open-button span:nth-of-type(2) {
         top:23px;
     }
-    
+
     .open-button span:nth-of-type(3) {
         top:31px;
     }
-    
+
     /*activeクラスが付与されると線が回転して×に*/
-    
+
     .open-button.active span:nth-of-type(1) {
         top: 18px;
         left: 18px;
         transform: translateY(6px) rotate(-45deg);
         width: 30%;
     }
-    
+
     .open-button.active span:nth-of-type(2) {
         opacity: 0;/*真ん中の線は透過*/
     }
-    
+
     .open-button.active span:nth-of-type(3){
         top: 30px;
         left: 18px;
@@ -83,7 +90,7 @@ a {
     }
     /*ナビの中*/
     #main {
-        position: relative;  
+        position: relative;
         // z-index: 990;
     }
     #nav-content {

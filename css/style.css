@@ -5,7 +5,8 @@
 *,
 ::before,
 ::after {
-  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
   border-style: solid;
   border-width: 0;
 }
@@ -92,7 +93,8 @@ dd {
  * 2. Show the overflow in Edge and IE.
  */
 hr {
-  box-sizing: content-box; /* 1 */
+  -webkit-box-sizing: content-box;
+          box-sizing: content-box; /* 1 */
   height: 0; /* 1 */
   overflow: visible; /* 2 */
   border-top-width: 1px;
@@ -374,6 +376,14 @@ th {
   font-weight: bold;
 }
 
+:root {
+  line-height: 1.4;
+  letter-spacing: 0.16rem;
+  -webkit-font-feature-settings: "palt";
+          font-feature-settings: "palt";
+  scroll-behavior: smooth;
+}
+
 html {
   overflow-x: hidden;
 }
@@ -414,6 +424,7 @@ a {
   /*ボタン内側*/
   .open-button span {
     display: inline-block;
+    -webkit-transition: all 0.4s;
     transition: all 0.4s; /*アニメーションの設定*/
     position: absolute;
     left: 14px;
@@ -434,7 +445,8 @@ a {
   .open-button.active span:nth-of-type(1) {
     top: 18px;
     left: 18px;
-    transform: translateY(6px) rotate(-45deg);
+    -webkit-transform: translateY(6px) rotate(-45deg);
+            transform: translateY(6px) rotate(-45deg);
     width: 30%;
   }
   .open-button.active span:nth-of-type(2) {
@@ -443,7 +455,8 @@ a {
   .open-button.active span:nth-of-type(3) {
     top: 30px;
     left: 18px;
-    transform: translateY(-6px) rotate(45deg);
+    -webkit-transform: translateY(-6px) rotate(45deg);
+            transform: translateY(-6px) rotate(45deg);
     width: 30%;
   }
   /*ナビの中*/
@@ -461,8 +474,12 @@ a {
     top: 0;
     right: 0;
     text-align: center;
-    transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+            transform: translateX(100%);
+    -webkit-transition: -webkit-transform 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+    transition: -webkit-transform 1s cubic-bezier(0.215, 0.61, 0.355, 1);
     transition: transform 1s cubic-bezier(0.215, 0.61, 0.355, 1);
+    transition: transform 1s cubic-bezier(0.215, 0.61, 0.355, 1), -webkit-transform 1s cubic-bezier(0.215, 0.61, 0.355, 1);
   }
   #nav-content ul {
     list-style: none;
@@ -480,6 +497,7 @@ a {
     color: #fff;
     text-decoration: none;
     padding: 30px 0;
+    -webkit-transition: opacity 0.6s ease;
     transition: opacity 0.6s ease;
   }
   #nav-content a:hover {
@@ -493,25 +511,30 @@ a {
   }
   .is-open #toggle-box > span:nth-child(1) {
     top: 50%;
-    transform: rotate(45deg) translate(-50%);
+    -webkit-transform: rotate(45deg) translate(-50%);
+            transform: rotate(45deg) translate(-50%);
   }
   .is-open #toggle-box > span:nth-child(2) {
     width: 0;
   }
   .is-open #toggle-box > span:nth-child(3) {
     top: 50%;
-    transform: rotate(-45deg) translate(-50%);
+    -webkit-transform: rotate(-45deg) translate(-50%);
+            transform: rotate(-45deg) translate(-50%);
   }
   .is-open #nav-content {
     z-index: 999;
-    transform: translateX(0);
+    -webkit-transform: translateX(0);
+            transform: translateX(0);
   }
   #page-top {
     position: fixed;
     right: 16px;
     bottom: 250px;
     opacity: 0; /*はじめは非表示*/
-    transform: translateX(100px);
+    -webkit-transform: translateX(100px);
+            transform: translateX(100px);
+    -webkit-transition: 0.3s all;
     transition: 0.3s all;
   }
   #page-top > img {
@@ -519,30 +542,60 @@ a {
   }
   /*左の動き*/
   #page-top.LeftMove {
-    animation: LeftAnime 0.5s forwards;
+    -webkit-animation: LeftAnime 0.5s forwards;
+            animation: LeftAnime 0.5s forwards;
+  }
+  @-webkit-keyframes LeftAnime {
+    from {
+      opacity: 0;
+      -webkit-transform: translateX(200px);
+              transform: translateX(200px);
+    }
+    to {
+      opacity: 1;
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+    }
   }
   @keyframes LeftAnime {
     from {
       opacity: 0;
-      transform: translateX(200px);
+      -webkit-transform: translateX(200px);
+              transform: translateX(200px);
     }
     to {
       opacity: 1;
-      transform: translateX(0);
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
     }
   }
   /*　右の動き　*/
   #page-top.RightMove {
-    animation: RightAnime 0.5s forwards;
+    -webkit-animation: RightAnime 0.5s forwards;
+            animation: RightAnime 0.5s forwards;
+  }
+  @-webkit-keyframes RightAnime {
+    from {
+      opacity: 1;
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+    }
+    to {
+      opacity: 1;
+      -webkit-transform: translateX(200px);
+              transform: translateX(200px);
+    }
   }
   @keyframes RightAnime {
     from {
       opacity: 1;
-      transform: translateX(0);
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
     }
     to {
       opacity: 1;
-      transform: translateX(200px);
+      -webkit-transform: translateX(200px);
+              transform: translateX(200px);
     }
   }
   .kv > h1 > img:nth-child(1) {
@@ -656,15 +709,19 @@ a {
     padding: 16px;
     background-color: #fff;
     border-radius: 16px;
-    box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.25);
+    -webkit-box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.25);
+            box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.25);
   }
   .slider-wrapper {
     position: relative;
   }
   .slider-wrapper dd {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    -moz-column-gap: 32px;
-         column-gap: 32px;
+    -webkit-column-gap: 32px;
+       -moz-column-gap: 32px;
+            column-gap: 32px;
   }
   .slider-wrapper dt {
     padding: 16px 0;
@@ -765,9 +822,16 @@ a {
     padding-bottom: 64px;
   }
   #entry div {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
   #entry h3 {
     font-size: 24px;
@@ -790,11 +854,19 @@ a {
     width: 40px;
   }
   #entry > div > .flex-wrapper > div {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    -moz-column-gap: 16px;
-         column-gap: 16px;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-column-gap: 16px;
+       -moz-column-gap: 16px;
+            column-gap: 16px;
     background-color: #fff;
     border-radius: 40px;
     padding: 16px 32px;
@@ -903,10 +975,15 @@ a {
     background-position: center 16px;
   }
   .faq > div > div > ul > li > div {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: flex-start;
-    -moz-column-gap: 24px;
-         column-gap: 24px;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
+    -webkit-column-gap: 24px;
+       -moz-column-gap: 24px;
+            column-gap: 24px;
   }
   .faq > div > div > ul > li > div > img {
     width: 30px;
@@ -957,8 +1034,11 @@ a {
     background-position: center 16px;
   }
   .info dl {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
     padding-top: 64px;
   }
   .info dt {
@@ -983,15 +1063,27 @@ a {
     padding-bottom: 64px;
   }
   footer > div {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
   footer > div > .flex-wrapper, footer > div > div:nth-child(3) {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: flex-start;
-    -moz-column-gap: 24px;
-         column-gap: 24px;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    -webkit-column-gap: 24px;
+       -moz-column-gap: 24px;
+            column-gap: 24px;
     background-color: #fff;
     border-radius: 40px;
     padding: 16px 32px;
@@ -1000,9 +1092,16 @@ a {
     width: 40px;
   }
   footer > div > div:nth-child(2) > a > div {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
   footer > div > div:nth-child(1) > a > div > p:nth-child(1) {
     font-size: 24px;
@@ -1048,9 +1147,15 @@ a {
     right: 10%;
   }
   header > div > .pc-header > nav > ul {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
   .pc-header > nav > ul > li > a {
     font-weight: 600;
@@ -1065,7 +1170,9 @@ a {
     right: 24px;
     bottom: 24px;
     opacity: 0; /*はじめは非表示*/
-    transform: translateX(100px);
+    -webkit-transform: translateX(100px);
+            transform: translateX(100px);
+    -webkit-transition: 0.3s all;
     transition: 0.3s all;
   }
   #page-top > img {
@@ -1073,30 +1180,60 @@ a {
   }
   /*左の動き*/
   #page-top.LeftMove {
-    animation: LeftAnime 0.5s forwards;
+    -webkit-animation: LeftAnime 0.5s forwards;
+            animation: LeftAnime 0.5s forwards;
+  }
+  @-webkit-keyframes LeftAnime {
+    from {
+      opacity: 0;
+      -webkit-transform: translateX(200px);
+              transform: translateX(200px);
+    }
+    to {
+      opacity: 1;
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+    }
   }
   @keyframes LeftAnime {
     from {
       opacity: 0;
-      transform: translateX(200px);
+      -webkit-transform: translateX(200px);
+              transform: translateX(200px);
     }
     to {
       opacity: 1;
-      transform: translateX(0);
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
     }
   }
   /*　右の動き　*/
   #page-top.RightMove {
-    animation: RightAnime 0.5s forwards;
+    -webkit-animation: RightAnime 0.5s forwards;
+            animation: RightAnime 0.5s forwards;
+  }
+  @-webkit-keyframes RightAnime {
+    from {
+      opacity: 1;
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
+    }
+    to {
+      opacity: 1;
+      -webkit-transform: translateX(200px);
+              transform: translateX(200px);
+    }
   }
   @keyframes RightAnime {
     from {
       opacity: 1;
-      transform: translateX(0);
+      -webkit-transform: translateX(0);
+              transform: translateX(0);
     }
     to {
       opacity: 1;
-      transform: translateX(200px);
+      -webkit-transform: translateX(200px);
+              transform: translateX(200px);
     }
   }
   .kv > h1 > img:nth-child(1) {
@@ -1106,11 +1243,18 @@ a {
     width: 100%;
   }
   #about > div > .flex-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: center;
-    -moz-column-gap: 96px;
-         column-gap: 96px;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-column-gap: 96px;
+       -moz-column-gap: 96px;
+            column-gap: 96px;
     padding: 120px 0px;
   }
   #about > div > .flex-wrapper > img {
@@ -1152,24 +1296,41 @@ a {
     width: 40%;
   }
   #reason > div > .flex-wrapper1 {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    -moz-column-gap: 64px;
-         column-gap: 64px;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-column-gap: 64px;
+       -moz-column-gap: 64px;
+            column-gap: 64px;
   }
   #reason > div > .flex-wrapper2 {
     width: 70%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    -moz-column-gap: 64px;
-         column-gap: 64px;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-column-gap: 64px;
+       -moz-column-gap: 64px;
+            column-gap: 64px;
     margin: 0 auto;
   }
   #reason > div > .flex-wrapper1 > .inner-wrapper,
   #reason > div > .flex-wrapper2 > .inner-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     width: 50%;
   }
   #reason > div > .flex-wrapper1 > .inner-wrapper > img,
@@ -1212,9 +1373,15 @@ a {
     line-height: 28px;
   }
   #job > div > div.flex-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     padding-bottom: 96px;
   }
   .slick-slider {
@@ -1249,15 +1416,19 @@ a {
     padding: 16px;
     background-color: #fff;
     border-radius: 16px;
-    box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.25);
+    -webkit-box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.25);
+            box-shadow: 4px 4px 5px rgba(0, 0, 0, 0.25);
   }
   .slider-wrapper {
     position: relative;
   }
   .slider-wrapper dd {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    -moz-column-gap: 32px;
-         column-gap: 32px;
+    -webkit-column-gap: 32px;
+       -moz-column-gap: 32px;
+            column-gap: 32px;
   }
   .slider-wrapper dt {
     padding: 16px 0;
@@ -1316,14 +1487,24 @@ a {
   }
   .suitable > div > .flex-container > .flex-wrapper:nth-child(1),
   .suitable > div > .flex-container > .flex-wrapper:nth-child(3) {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row-reverse;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: reverse;
+        -ms-flex-direction: row-reverse;
+            flex-direction: row-reverse;
   }
   .suitable > div > .flex-container > .flex-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    -moz-column-gap: 24px;
-         column-gap: 24px;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-column-gap: 24px;
+       -moz-column-gap: 24px;
+            column-gap: 24px;
     padding-bottom: 64px;
   }
   .flex-container {
@@ -1368,9 +1549,16 @@ a {
     padding-bottom: 64px;
   }
   #entry div {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
   }
   #entry h3 {
     font-size: 48px;
@@ -1389,21 +1577,37 @@ a {
     text-align: center;
   }
   #entry > div > .flex-wrapper {
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
     display: inline-flex;
-    flex-direction: row;
-    align-items: flex-end;
-    -moz-column-gap: 16px;
-         column-gap: 16px;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: end;
+        -ms-flex-align: end;
+            align-items: flex-end;
+    -webkit-column-gap: 16px;
+       -moz-column-gap: 16px;
+            column-gap: 16px;
   }
   #entry > div > .flex-wrapper > div > img {
     width: 40px;
   }
   #entry > div > .flex-wrapper > div {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    -moz-column-gap: 16px;
-         column-gap: 16px;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-column-gap: 16px;
+       -moz-column-gap: 16px;
+            column-gap: 16px;
     background-color: #fff;
     border-radius: 60px;
     padding: 16px 32px;
@@ -1466,10 +1670,15 @@ a {
     width: 100%;
   }
   #step > div > .pc-wrapper > .text-wrapper {
-    -moz-column-gap: 16px;
-         column-gap: 16px;
+    -webkit-column-gap: 16px;
+       -moz-column-gap: 16px;
+            column-gap: 16px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-between;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
   }
   #step > div > .pc-wrapper > .text-wrapper p {
     padding-top: 24px;
@@ -1506,10 +1715,15 @@ a {
     background-position: center 150px;
   }
   .faq > div > div > ul > li > div {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    -moz-column-gap: 24px;
-         column-gap: 24px;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-column-gap: 24px;
+       -moz-column-gap: 24px;
+            column-gap: 24px;
   }
   .faq > div > div > ul > li > div > img {
     width: 30px;
@@ -1565,16 +1779,22 @@ a {
     background-position: center 160px;
   }
   .info > div > div {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    -moz-column-gap: 56px;
-         column-gap: 56px;
+    -webkit-column-gap: 56px;
+       -moz-column-gap: 56px;
+            column-gap: 56px;
   }
   iframe {
     height: auto;
   }
   .info dl {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
   }
   .info dt {
     width: 40%;
@@ -1592,10 +1812,17 @@ a {
     padding: 120px 0;
   }
   footer > div {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     text-align: center;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
   footer h3 {
     font-size: 40px;
@@ -1604,11 +1831,19 @@ a {
     padding-bottom: 120px;
   }
   footer > div > .flex-wrapper {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row;
-    align-items: center;
-    -moz-column-gap: 16px;
-         column-gap: 16px;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-column-gap: 16px;
+       -moz-column-gap: 16px;
+            column-gap: 16px;
     background-color: #fff;
     border-radius: 60px;
     padding: 16px 32px;
@@ -1621,9 +1856,16 @@ a {
     width: 40px;
   }
   footer > div > div:nth-child(2) > a > div {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
   footer > div > div:nth-child(1) > a > div > p:nth-child(1) {
     font-size: 40px;
