@@ -1,10 +1,10 @@
 @use "_reset.css";
 
 :root {
-    line-height: 1.4;
+    text-align: justify;
     letter-spacing: .16rem;
+    line-height: 1.6;
     font-feature-settings: "palt";
-    scroll-behavior: smooth;
 }
 
 html {
@@ -22,6 +22,9 @@ a {
 // -----ここからモバイル版-----
 @media screen and (max-width: 1200px) {
 
+.pc {
+    display: none;
+  }
     header {
         height: 0;
     }
@@ -96,7 +99,7 @@ a {
     #nav-content {
         z-index: 900;
         overflow: auto;
-        width: 40%;
+        width: 60%;
         height: 100%;
         background: #66A7CA;
         opacity: 0.8;
@@ -161,7 +164,7 @@ a {
         transition: 0.3s all;
     }
     #page-top > img {
-        width: 70px;
+        width: 60px;
     }
     /*左の動き*/
     #page-top.LeftMove{
@@ -221,18 +224,15 @@ a {
         font-weight: 600;
         padding: 24px 0;
     }
-    #about > div > div.flex-wrapper {
-        padding-bottom: 40px;
-    }
-    #about > div > div.text-wrapper {
-        padding-bottom: 64px;
-    }
-    #about > div > div.flex-wrapper > div > div p {
-        line-height: 28px;
-    }
-    #about > div > div.text-wrapper > div p {
-        line-height: 28px;
-    }
+    #about {
+      padding-bottom: 64px;
+      .text-wrapper {
+        p {
+          text-align: left;
+          text-align: justify;
+          }
+        }
+      }
 
 // -----ここからreason-----
 
@@ -243,11 +243,13 @@ a {
         display: block;
         margin: 0 auto;
         padding: 64px 0 24px 0;
-        width: 100%;
+        // width: 80%;
     }
     #reason > div > div.flex-wrapper1 > div > img ,
     #reason > div > div.flex-wrapper2 > div > img {
-        width: 100%;
+      display: block;
+      width: 80%;
+      margin: auto;
     }
     #reason > div > div.flex-wrapper1 > div > div ,
     #reason > div > div.flex-wrapper2 > div > div {
@@ -361,21 +363,20 @@ a {
     }
 
 // -----ここからsuitable-----
-
+    .suitable {
+        br {
+        display: block;
+        }
+    }
     .suitable > div {
-        padding: 0 32px;
+        padding: 0 16px;
     }
     .suitable h3 {
-        width: 70%;
         margin: 0 auto;
         padding-bottom: 50px;
-        font-size: 24px;
         font-weight: 600;
         color: #FB8C3C;
         text-align: center;
-        line-height: 32px;
-        -webkit-text-stroke: 0.5px #FFF;
-        text-shadow: 2px 2px 3px rgb(0 0 0 / 25%);
     }
     .suitable > div::before {
         display: block;
@@ -385,7 +386,7 @@ a {
     .suitable > div > .text-box {
         position: relative;
         background-image: url(../img/suitable/Suited\ for\ you.svg);
-        background-size: 100%;
+        background-size: 70%;
         background-repeat: no-repeat;
         background-position: center 40px;
     }
@@ -395,16 +396,13 @@ a {
     }
     .suitable h4 {
         font-size: 24px;
-        font-weight: 600;
+        font-weight: bold;
         text-align: center;
         padding: 16px 0;
-        letter-spacing: -1px;
     }
-    .suitable > div > div > div:nth-child(3) > div > h4 {
-        font-size: 23px;
-    }
+
     .suitable p {
-        line-height: 24px;
+        // line-height: 24px;
         border-top: solid;
         padding: 16px 0 40px 0;
     }
@@ -477,9 +475,10 @@ a {
     #entry > div > div.flex-wrapper > div:nth-child(1) > a > div > p:nth-child(1) {
         font-size: 24px;
         font-weight: 600;
-        letter-spacing: 2px;
+        // letter-spacing: 2px;
         color: #69533B;
-        padding-bottom: 5px;
+        line-height: 1.3;
+        // padding-bottom: 5px;
     }
     #entry > div > div.flex-wrapper > div:nth-child(1) > a > div > p:nth-child(2) {
         font-size: 12px;
@@ -487,7 +486,7 @@ a {
     }
     #entry > div > div.flex-wrapper > div:nth-child(2) > a > div > p {
         font-weight: 600;
-        font-size: 23px;
+        // font-size: 23px;
         color: #69533B;
     }
 
@@ -612,7 +611,7 @@ a {
         padding: 64px 0;
     }
     .info h3 {
-        width: 90%;
+        // width: 90%;
         margin: 0 auto;
         padding-bottom: 70px;
         font-size: 24px;
@@ -620,9 +619,10 @@ a {
         color: #FB8C3C;
         text-align: center;
         line-height: 32px;
-        -webkit-text-stroke: 0.5px #FFF;
-        text-shadow: 2px 2px 3px rgb(0 0 0 / 25%);
     }
+                        img {
+                          width: 80%;
+                        }
     .info > div::before {
         display: block;
         content: "";
@@ -631,7 +631,7 @@ a {
     .info > div > .text-box {
         position: relative;
         background-image: url(../img/About\ Us.svg);
-        background-size: 60%;
+        background-size: 40%;
         background-repeat: no-repeat;
         background-position: center 16px;
     }
@@ -649,7 +649,7 @@ a {
         padding: 24px 0;
     }
     .info dt , .info dd {
-        border-bottom: solid;
+        border-bottom: 1px solid #ccc;
     }
 
 // -----ここからfooter-----
@@ -708,7 +708,9 @@ a {
 // -----ここからPC版-----//////////////////////////////////
 
 @media screen and (min-width: 1200px) {
-
+.sp {
+    display: none;
+  }
     .container {
         max-width: 1200px;
         width: 80%;
@@ -761,7 +763,7 @@ a {
         transition: 0.3s all;
     }
     #page-top > img {
-        width: 80px;
+        width: 60px;
     }
     /*左の動き*/
     #page-top.LeftMove{
@@ -1120,6 +1122,7 @@ a {
         border-radius: 60px;
         padding: 16px 32px;
         height: 100px;
+        line-height: 1;
     }
     #entry > div > .flex-wrapper > div:nth-child(2) {
         margin-top: 24px;
@@ -1187,8 +1190,9 @@ a {
     }
     #step > div > .pc-wrapper > .text-wrapper p {
         padding-top: 24px;
-        width: 20%;
+        width: 18%;
         line-height: 1.4;
+        font-size: 14px;
     }
 
 // -----ここからfaq-----
@@ -1226,6 +1230,8 @@ a {
         display: flex;
         align-items: center;
         column-gap: 24px;
+        width: 800px;
+        margin: auto;
     }
     .faq > div > div > ul > li > div > img {
         width: 30px;
@@ -1233,15 +1239,15 @@ a {
     .question {
         font-size: 32px;
         font-weight: 600;
-        line-height: 32px;
+        // line-height: 32px;
         color: #66A7CA;
-        line-height: 48px;
+        // line-height: 48px;
     }
     .answer {
         color: #000;
         font-size: 20px;
         font-weight: 600;
-        line-height: 34px;
+        // line-height: 34px;
     }
     .faq > div > div > ul > li > div:nth-child(1) {
         padding-top: 64px;
@@ -1261,15 +1267,13 @@ a {
         max-width: none;
     }
     .info h3 {
-        width: 100%;
-        margin: 0 auto;
         padding: 120px 0;
-        font-size: 60px;
         font-weight: 600;
         color: #FB8C3C;
         text-align: center;
-        -webkit-text-stroke: 0.5px #FFF;
-        text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25);
+        img {
+        width: 40%;
+        }
     }
     .info > div::before {
         display: block;
@@ -1295,15 +1299,15 @@ a {
         flex-wrap: wrap;
     }
     .info dt {
-        width: 40%;
+        width: 20%;
         padding: 24px 0;
     }
     .info dd {
-        width: 60%;
+        width: 80%;
         padding: 24px 0;
     }
     .info dt , .info dd {
-        border-bottom: solid;
+        border-bottom: 1px solid #ccc;
     }
 
 // -----ここからfooter-----
@@ -1333,6 +1337,7 @@ a {
         border-radius: 60px;
         padding: 16px 32px;
         height: 100px;
+        line-height: 1;
     }
     footer > div > .flex-wrapper:nth-child(2) {
         margin-top: 24px;
